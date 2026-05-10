@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student History</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+    <h2>Student Performance History</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Maths</th>
+                <th>English</th>
+                <th>Chemistry</th>
+                <th>Total Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in record %}
+            <tr>
+                <td>{{ row[0] }}</td> <!-- id -->
+                <td>{{ row[1] }}</td> <!-- name -->
+                <td>{{ row[2] }}</td> <!-- class -->
+                <td>{{ row[3] }}</td> <!-- maths -->
+                <td>{{ row[4] }}</td> <!-- english -->
+                <td>{{ row[5] }}</td> <!-- chemistry -->
+                <td>{{ row[6] }}</td> <!-- marks -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="/">Go Back Home</a>
+
+</body>
+</html>

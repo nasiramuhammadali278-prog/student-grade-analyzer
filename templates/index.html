@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student grade analyzer</title>
+    <link rel="stylesheet" href="/static/design.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Grade Analyzer</h1>
+        
+        <form action="/analyze" method="POST">
+            <label>Enter your name</label>
+            <input type="text" name="name" placeholder="Your name">
+            
+            <label>Enter your class</label>
+            <input type="number" name="class" placeholder="Class number">
+            
+            <div>
+                <h2>Enter Subject Marks</h2>
+                
+                <label>Maths</label>
+                <input type="number" name="maths" placeholder="0/75">
+                
+                <label>English</label>
+                <input type="number" name="english" placeholder="0/75">
+                
+                <label>Chemistry</label>
+                <input type="number" name="chemistry" placeholder="0/75">
+            </div>
+            <div>
+            <form>
+                <button type="submit">Analyze Grades</button>
+            </form>
+        </div>
+        <form action="/history" method="POST">
+            <button type="submit">History of the students</button>
+        </form>
+        
+</body>
+</html>
