@@ -1,0 +1,192 @@
+/* Base Reset & Brand Colors */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #f1f5f9; /* Soft cool gray background */
+  color: #334155;
+  line-height: 1.5;
+  padding: 50px 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Beautiful Heading with an Accent Border */
+h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+  position: relative;
+  padding-left: 14px;
+}
+
+h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 4px;
+  background-color: #4f46e5; /* Deep Indigo Brand Accent */
+  border-radius: 2px;
+}
+
+/* Table Container Card */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  border: 1px solid #cbd5e1; /* Main Outer Frame Border */
+}
+
+/* Structured Grid Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.925rem;
+}
+
+/* Table Header Styles */
+th {
+  background-color: #6366f1; /* Indigo Header Background */
+  color: #ffffff;            /* White Text for High Contrast */
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  padding: 14px 18px;
+  border-right: 1px solid #4f46e5; /* Distinct dark-indigo vertical separators */
+}
+
+th:last-child {
+  border-right: none;
+}
+
+/* Table Body Grid & Colors */
+td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #e2e8f0; /* Crisp Row Dividers */
+  border-right: 1px solid #f1f5f9;  /* Soft Inner Column Dividers */
+}
+
+td:last-child {
+  border-right: none;
+}
+
+/* Alternating Row Colors (Zebra Striping) */
+tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+/* Interactive Hover Tint */
+tbody tr:hover {
+  background-color: #edf2f7;
+}
+
+/* Highlighted Column Styling */
+.id-column {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.total-column {
+  background-color: #f5f3ff; /* Very soft purple highlight for totals */
+  color: #4f46e5 !important;
+}
+
+/* Minimalist Pill Badge for Class Name */
+.badge {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid #bae6fd;
+}
+
+/* Alignments & Numbers */
+.text-right { text-align: right; }
+.font-medium { font-weight: 500; color: #1e293b; }
+.font-bold { font-weight: 700; }
+.numeric { font-variant-numeric: tabular-nums; }
+
+/* Polished Anchor Link Minimalist Design */
+.navigation-wrapper {
+  margin-top: 28px;
+}
+
+#back-home {
+  display: inline-flex;
+  align-items: center;
+  color: #4f46e5; /* Colored link text matches theme */
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+#back-home .arrow {
+  margin-right: 8px;
+  transition: transform 0.2s ease;
+}
+
+/* Anchor Interactive States */
+#back-home:hover {
+  background-color: #eeebff; /* Soft hover button layout */
+  border-color: #c7d2fe;
+}
+
+#back-home:hover .arrow {
+  transform: translateX(-4px); /* Interactive nudge */
+}
+
+#back-home:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+button {
+    width: 50%;
+    padding: 10px;
+    background: linear-gradient(135deg, #eae866 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 11px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+/* Targets only elements with class="delete-input" */
+.delete-input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+.delete-input:focus {
+  border-color: #d9534f; /* Changed to red to signal a "delete" action */
+  box-shadow: 0 0 8px 0 rgba(217, 83, 79, 0.2);
+  outline: none;
+}

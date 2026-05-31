@@ -1,46 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student History</title>
-    <style>
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-    </style>
+    <link rel="stylesheet" href="static/history.css">
 </head>
 <body>
 
-    <h2>Student Performance History</h2>
+    <div class="container">
+        <h2>Student Performance History</h2>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Class</th>
-                <th>Maths</th>
-                <th>English</th>
-                <th>Chemistry</th>
-                <th>Total Marks</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in record %}
-            <tr>
-                <td>{{ row[0] }}</td> <!-- id -->
-                <td>{{ row[1] }}</td> <!-- name -->
-                <td>{{ row[2] }}</td> <!-- class -->
-                <td>{{ row[3] }}</td> <!-- maths -->
-                <td>{{ row[4] }}</td> <!-- english -->
-                <td>{{ row[5] }}</td> <!-- chemistry -->
-                <td>{{ row[6] }}</td> <!-- marks -->
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Class</th>
+                        <th class="text-right">Maths</th>
+                        <th class="text-right">English</th>
+                        <th class="text-right">Chemistry</th>
+                        <th class="text-right">Total Marks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in record %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td class="font-medium">{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td class="text-right numeric">{{ row[3] }}</td>
+                        <td class="text-right numeric">{{ row[4] }}</td>
+                        <td class="text-right numeric">{{ row[5] }}</td>
+                        <td class="text-right numeric font-bold">{{ row[6] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-    <br>
-    <a href="/">Go Back Home</a>
-
+        <div class="navigation-wrapper">
+            <a href="/" id="back-home"><span class="arrow">←</span> Go Back Home</a>
+        </div>
+            <form action="/delete" method="POST" class="delete-form">
+                <h2>Delete Record</h2>
+                <label for="delete-id">Please input the id you want to delete</label>
+                <input id="delete-id" name="which_to_delete" type="number" class="delete-input" placeholder="Enter id here: ">
+                <button type="submit" class="delete-btn">Delete</button>
+            </form>
+        </div>>
 </body>
 </html>

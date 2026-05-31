@@ -28,15 +28,29 @@
                 
                 <label>Chemistry</label>
                 <input type="number" name="chemistry" placeholder="0/75">
+                </div>
+                <div>
+                    <button type="submit">Analyze Grades</button>
+                </div>
             </div>
-            <div>
-            <form>
-                <button type="submit">Analyze Grades</button>
-            </form>
-        </div>
-        <form action="/history" method="POST">
-            <button type="submit">History of the students</button>
         </form>
-        
+    </div>
+    <script>
+    // This script catches the 'Enter' key and moves focus to the next input
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach((input, index) => {
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault(); // Stop the form from submitting
+                const next = inputs[index + 1];
+                if (next) {
+                    next.focus(); // Move to the next box
+                } else {
+                    input.form.submit(); // If it's the last box, submit!
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>
