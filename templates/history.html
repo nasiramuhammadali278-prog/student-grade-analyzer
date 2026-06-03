@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="static/history.css">
 </head>
 <body>
-
     <div class="container">
         <h2>Student Performance History</h2>
 
@@ -21,7 +20,7 @@
                         <th class="text-right">Maths</th>
                         <th class="text-right">English</th>
                         <th class="text-right">Chemistry</th>
-                        <th class="text-right">Total Marks</th>
+                        <th class="text-right">Total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,6 +34,10 @@
                         <td class="text-right numeric">{{ row[5] }}</td>
                         <td class="text-right numeric font-bold">{{ row[6] }}</td>
                     </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="empty-state">No records found.</td>
+                    </tr>
                     {% endfor %}
                 </tbody>
             </table>
@@ -43,12 +46,13 @@
         <div class="navigation-wrapper">
             <a href="/" id="back-home"><span class="arrow">←</span> Go Back Home</a>
         </div>
-            <form action="/delete" method="POST" class="delete-form">
-                <h2>Delete Record</h2>
-                <label for="delete-id">Please input the id you want to delete</label>
-                <input id="delete-id" name="which_to_delete" type="number" class="delete-input" placeholder="Enter id here: ">
-                <button type="submit" class="delete-btn">Delete</button>
-            </form>
-        </div>>
+
+        <form action="/delete" method="POST" class="delete-form">
+            <h2>Delete a Record</h2>
+            <label for="delete-id">Enter student ID to remove</label>
+            <input id="delete-id" name="which_to_delete" type="number" class="delete-input" placeholder="e.g. 3">
+            <button type="submit" class="delete-btn">Delete Record</button>
+        </form>
+    </div>
 </body>
 </html>

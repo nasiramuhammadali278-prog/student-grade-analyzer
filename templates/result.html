@@ -3,33 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Result</title>
-
-    <!-- Link CSS File -->
+    <title>Student Result — {{name}}</title>
     <link rel="stylesheet" href="static/another.css">
 </head>
-
 <body>
-
     <div class="container">
-        <div class="title">Student Result</div>
+        <div class="title">Result Card</div>
 
-        <div class="info">
-            <h1>Name: <span>{{name}}</span></h1>
+        <div class="score-circle">
+            <div class="score-label">Total</div>
+            <div class="score-number">{{Toatal_number}}</div>
         </div>
 
         <div class="info">
-            <h1>Class: <span>{{class_1}}</span></h1>
+            <span class="info-label">Student</span>
+            <span class="info-value">{{name}}</span>
         </div>
 
         <div class="info">
-            <h1>Total Marks: <span>{{Toatal_number}}</span></h1>
+            <span class="info-label">Class</span>
+            <span class="info-value">{{class_1}}</span>
         </div>
 
         <form action="/history" method="POST">
-            <button type="submit">History of the students</button>
+            <button type="submit">View All Students →</button>
         </form>
     </div>
-
 </body>
 </html>

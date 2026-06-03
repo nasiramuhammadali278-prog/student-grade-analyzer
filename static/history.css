@@ -1,192 +1,243 @@
-/* Base Reset & Brand Colors */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #0a0a0f;
+  --surface: #111118;
+  --surface-2: #1a1a24;
+  --border: #2a2a3a;
+  --accent: #7c6aff;
+  --accent-2: #ff6a9d;
+  --accent-3: #6affcc;
+  --text: #f0eeff;
+  --text-muted: #7a7a9a;
+  --input-bg: #16161f;
+  --radius: 12px;
+  --glow: 0 0 40px rgba(124, 106, 255, 0.15);
+  --danger: #ff4a6a;
 }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  background-color: #f1f5f9; /* Soft cool gray background */
-  color: #334155;
-  line-height: 1.5;
-  padding: 50px 20px;
-}
-
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-/* Beautiful Heading with an Accent Border */
-h2 {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 28px;
-  letter-spacing: -0.02em;
+  font-family: 'DM Mono', monospace;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 40px 24px;
   position: relative;
-  padding-left: 14px;
+  overflow-x: hidden;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  top: -30%;
+  left: -10%;
+  width: 70vw;
+  height: 70vw;
+  background: radial-gradient(circle, rgba(124,106,255,0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ─── CONTAINER ─────────────────────────────── */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── HEADING ─────────────────────────────────── */
+h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 h2::before {
   content: '';
-  position: absolute;
-  left: 0;
-  top: 4px;
-  bottom: 4px;
-  width: 4px;
-  background-color: #4f46e5; /* Deep Indigo Brand Accent */
-  border-radius: 2px;
+  display: block;
+  width: 6px;
+  height: 28px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  border-radius: 4px;
+  flex-shrink: 0;
 }
 
-/* Table Container Card */
+/* ─── TABLE ─────────────────────────────────── */
 .table-responsive {
-  width: 100%;
   overflow-x: auto;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  border: 1px solid #cbd5e1; /* Main Outer Frame Border */
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--glow);
+  margin-bottom: 32px;
 }
 
-/* Structured Grid Table */
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.925rem;
+  background: var(--surface);
 }
 
-/* Table Header Styles */
+thead {
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+
 th {
-  background-color: #6366f1; /* Indigo Header Background */
-  color: #ffffff;            /* White Text for High Contrast */
-  font-weight: 600;
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
-  padding: 14px 18px;
-  border-right: 1px solid #4f46e5; /* Distinct dark-indigo vertical separators */
+  color: var(--text-muted);
+  padding: 14px 20px;
+  text-align: left;
+  white-space: nowrap;
 }
+th.text-right { text-align: right; }
 
-th:last-child {
-  border-right: none;
-}
-
-/* Table Body Grid & Colors */
 td {
-  padding: 14px 18px;
-  border-bottom: 1px solid #e2e8f0; /* Crisp Row Dividers */
-  border-right: 1px solid #f1f5f9;  /* Soft Inner Column Dividers */
+  padding: 14px 20px;
+  font-size: 13px;
+  color: var(--text);
+  border-bottom: 1px solid rgba(42, 42, 58, 0.5);
+  vertical-align: middle;
+}
+tbody tr:last-child td { border-bottom: none; }
+
+tbody tr {
+  transition: background 0.15s;
+}
+tbody tr:hover { background: var(--surface-2); }
+
+.text-right  { text-align: right; }
+.numeric     { font-variant-numeric: tabular-nums; letter-spacing: 0.04em; }
+.font-medium { font-weight: 500; }
+.font-bold   { font-weight: 700; color: var(--accent-3); }
+
+/* Row index */
+td:first-child {
+  color: var(--text-muted);
+  font-size: 11px;
 }
 
-td:last-child {
-  border-right: none;
-}
-
-/* Alternating Row Colors (Zebra Striping) */
-tbody tr:nth-child(even) {
-  background-color: #f8fafc;
-}
-
-/* Interactive Hover Tint */
-tbody tr:hover {
-  background-color: #edf2f7;
-}
-
-/* Highlighted Column Styling */
-.id-column {
-  color: #64748b;
-  font-weight: 600;
-}
-
-.total-column {
-  background-color: #f5f3ff; /* Very soft purple highlight for totals */
-  color: #4f46e5 !important;
-}
-
-/* Minimalist Pill Badge for Class Name */
-.badge {
-  background-color: #e0f2fe;
-  color: #0369a1;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  border: 1px solid #bae6fd;
-}
-
-/* Alignments & Numbers */
-.text-right { text-align: right; }
-.font-medium { font-weight: 500; color: #1e293b; }
-.font-bold { font-weight: 700; }
-.numeric { font-variant-numeric: tabular-nums; }
-
-/* Polished Anchor Link Minimalist Design */
+/* ─── NAVIGATION ─────────────────────────────── */
 .navigation-wrapper {
-  margin-top: 28px;
+  margin-bottom: 40px;
 }
 
 #back-home {
   display: inline-flex;
   align-items: center;
-  color: #4f46e5; /* Colored link text matches theme */
+  gap: 8px;
+  color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 600;
-  padding: 6px 12px;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  transition: all 0.2s ease;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  transition: color 0.2s, gap 0.2s;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+#back-home:hover { color: var(--text); gap: 12px; border-color: var(--accent); }
+.arrow { font-size: 16px; }
+
+/* ─── DELETE FORM ─────────────────────────────── */
+.delete-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 420px;
+  box-shadow: var(--glow);
+  position: relative;
+  overflow: hidden;
 }
 
-#back-home .arrow {
-  margin-right: 8px;
-  transition: transform 0.2s ease;
+.delete-form::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--danger), var(--accent-2));
 }
 
-/* Anchor Interactive States */
-#back-home:hover {
-  background-color: #eeebff; /* Soft hover button layout */
-  border-color: #c7d2fe;
+.delete-form h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.delete-form h2::before {
+  background: linear-gradient(180deg, var(--danger), var(--accent-2));
+  height: 20px;
+  width: 4px;
 }
 
-#back-home:hover .arrow {
-  transform: translateX(-4px); /* Interactive nudge */
+.delete-form label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
 }
 
-#back-home:focus-visible {
-  outline: 2px solid #4f46e5;
-  outline-offset: 2px;
-}
-
-button {
-    width: 50%;
-    padding: 10px;
-    background: linear-gradient(135deg, #eae866 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    border-radius: 11px;
-    font-size: 20px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 30px;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-/* Targets only elements with class="delete-input" */
 .delete-input {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  transition: 0.3s;
-}
-
-.delete-input:focus {
-  border-color: #d9534f; /* Changed to red to signal a "delete" action */
-  box-shadow: 0 0 8px 0 rgba(217, 83, 79, 0.2);
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: 'DM Mono', monospace;
+  font-size: 15px;
+  padding: 12px 16px;
   outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -moz-appearance: textfield;
+  margin-bottom: 16px;
+}
+.delete-input::-webkit-outer-spin-button,
+.delete-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.delete-input:focus {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px rgba(255, 74, 106, 0.12);
+}
+.delete-input::placeholder { color: #3a3a5a; }
+
+.delete-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--danger), #ff2d55);
+  color: white;
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border: none;
+  border-radius: var(--radius);
+  padding: 13px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+.delete-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(255,74,106,0.35);
+}
+.delete-btn:active { transform: translateY(0); }
+
+/* ─── EMPTY STATE ─────────────────────────────── */
+.empty-state {
+  text-align: center;
+  padding: 64px 24px;
+  color: var(--text-muted);
+  font-size: 13px;
 }
